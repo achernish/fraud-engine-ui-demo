@@ -5,12 +5,15 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import com.inatec.demo.TutorialApplication;
+import com.inatec.demo.DemoApplication;
 
+/**
+ * @author Anatoly Chernysh
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = TutorialApplication.class)
+@SpringApplicationConfiguration(classes = DemoApplication.class)
 @WebAppConfiguration
-public class TutorialApplicationTests {
+public class DemoApplicationTests {
 
     @Test
     public void contextLoads() {
