@@ -2,8 +2,8 @@ package com.inatec.demo;
 
 import com.inatec.demo.backend.Merchant;
 import com.inatec.demo.backend.MerchantService;
-import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.annotations.*;
+import com.vaadin.annotations.JavaScript;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.event.FieldEvents.TextChangeEvent;
 import com.vaadin.event.FieldEvents.TextChangeListener;
@@ -11,7 +11,7 @@ import com.vaadin.event.SelectionEvent;
 import com.vaadin.event.SelectionEvent.SelectionListener;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.spring.annotation.SpringUI;
+//import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.*;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
@@ -22,7 +22,8 @@ import javax.servlet.annotation.WebServlet;
  * @author Anatoly Chernysh
  */
 @Theme("valo")
-@SpringUI
+@StyleSheet(value = {"http://localhost:8080/xtext/2.9.0.rc1/xtext-ace.css", "http://localhost:8080/style.css"})
+@JavaScript(value = {"http://localhost:8080/webjars/requirejs/2.1.20/require.min.js"})
 public class FraudEngineUI extends UI {
 
     /*
@@ -126,6 +127,7 @@ public class FraudEngineUI extends UI {
         mainLayout.setExpandRatio(left, 1);
 
         setContent(mainLayout);
+
     }
 
     /*
