@@ -1,0 +1,9 @@
+.content {
+    width: 640px;
+}
+
+#xtext-editor {
+    padding: 4px;
+    border: 1px solid #aaa;
+    height: 200px;
+}

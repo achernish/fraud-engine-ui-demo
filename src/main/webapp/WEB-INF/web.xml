@@ -6,21 +6,30 @@
         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
      http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
+
+<!--
     <servlet>
         <servlet-name>myservlet</servlet-name>
-        <servlet-class>
-            com.vaadin.server.VaadinServlet
-        </servlet-class>
-
+        <servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
         <init-param>
             <param-name>UI</param-name>
             <param-value>com.inatec.demo.FraudEngineUI</param-value>
         </init-param>
-
     </servlet>
 
     <servlet-mapping>
         <servlet-name>myservlet</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>XtextServices</servlet-name>
+        <servlet-class>com.inatec.demo.xtext.XtextServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>XtextServices</servlet-name>
+        <url-pattern>/xtext-service/*</url-pattern>
+    </servlet-mapping>
+    -->
 </web-app>

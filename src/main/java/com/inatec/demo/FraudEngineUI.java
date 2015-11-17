@@ -22,8 +22,6 @@ import javax.servlet.annotation.WebServlet;
  * @author Anatoly Chernysh
  */
 @Theme("valo")
-@StyleSheet(value = {"http://localhost:8080/xtext/2.9.0.rc1/xtext-ace.css", "http://localhost:8080/style.css"})
-@JavaScript(value = {"http://localhost:8080/webjars/requirejs/2.1.20/require.min.js"})
 public class FraudEngineUI extends UI {
 
     /*

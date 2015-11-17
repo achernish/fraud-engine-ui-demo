@@ -1,6 +1,8 @@
 package com.inatec.demo;
 
+import com.google.gwt.user.client.ui.RootPanel;
 import com.inatec.demo.backend.Merchant;
+import com.inatec.demo.xtext.XTextEditor;
 import com.vaadin.data.fieldgroup.BeanFieldGroup;
 import com.vaadin.data.fieldgroup.FieldGroup;
 import com.vaadin.event.ShortcutAction;
@@ -55,7 +57,7 @@ public class MerchantForm extends FormLayout implements ClickListener {
         HorizontalLayout actions = new HorizontalLayout(save, cancel);
         actions.setSpacing(true);
 
-        addComponents(actions, firstName, lastName, phone, email, birthDate);
+        addComponents(actions, firstName, lastName, phone, email, birthDate, new XTextEditor());
     }
 
     void edit(Merchant merchant) {
