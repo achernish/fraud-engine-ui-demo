@@ -3,7 +3,6 @@ package com.inatec.demo;
 import com.inatec.demo.backend.Merchant;
 import com.inatec.demo.backend.MerchantService;
 import com.vaadin.annotations.*;
-import com.vaadin.annotations.JavaScript;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.event.FieldEvents.TextChangeEvent;
 import com.vaadin.event.FieldEvents.TextChangeListener;
@@ -77,7 +76,7 @@ public class FraudEngineUI extends UI {
 
             @Override
             public void textChange(TextChangeEvent event) {
-                refreshContacts(event.getText());
+                refreshMerchants(event.getText());
             }
         });
 
@@ -95,7 +94,7 @@ public class FraudEngineUI extends UI {
                 merchantForm.edit((Merchant) merchantList.getSelectedRow());
             }
         });
-        refreshContacts();
+        refreshMerchants();
     }
 
     /*
@@ -136,11 +135,11 @@ public class FraudEngineUI extends UI {
      * your code into classes to easier maintenance. With Vaadin you can follow
      * MVC, MVP or any other design pattern you choose.
      */
-    void refreshContacts() {
-        refreshContacts(filter.getValue());
+    void refreshMerchants() {
+        refreshMerchants(filter.getValue());
     }
 
-    private void refreshContacts(String stringFilter) {
+    private void refreshMerchants(String stringFilter) {
         merchantList.setContainerDataSource(new BeanItemContainer<Merchant>(
                 Merchant.class, service.findAll(stringFilter)));
         merchantForm.setVisible(false);

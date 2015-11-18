@@ -1,13 +1,10 @@
 package com.inatec.demo;
 
-import com.google.gwt.user.client.ui.RootPanel;
 import com.inatec.demo.backend.Merchant;
 import com.inatec.demo.xtext.XTextEditor;
 import com.vaadin.data.fieldgroup.BeanFieldGroup;
 import com.vaadin.data.fieldgroup.FieldGroup;
 import com.vaadin.event.ShortcutAction;
-import com.vaadin.server.Page;
-import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.*;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
@@ -27,6 +24,7 @@ public class MerchantForm extends FormLayout implements ClickListener {
     TextField phone = new TextField("Phone");
     TextField email = new TextField("Email");
     DateField birthDate = new DateField("Birth date");
+    XTextEditor xTextEditor = new XTextEditor();
 
     Merchant merchant;
 
@@ -57,7 +55,14 @@ public class MerchantForm extends FormLayout implements ClickListener {
         HorizontalLayout actions = new HorizontalLayout(save, cancel);
         actions.setSpacing(true);
 
-        addComponents(actions, firstName, lastName, phone, email, birthDate, new XTextEditor());
+        xTextEditor.addValueChangeListener(new XTextEditor.ValueChangeListener() {
+            @Override
+            public void valueChange() {
+                Notification.show("Value: " + xTextEditor.getValue());
+            }
+        });
+
+        addComponents(actions, firstName, lastName, phone, email, birthDate, xTextEditor);
     }
 
     void edit(Merchant merchant) {
@@ -89,7 +94,7 @@ public class MerchantForm extends FormLayout implements ClickListener {
                 String msg = String.format("Saved '%s %s'.",
                         merchant.getFirstName(), merchant.getLastName());
                 Notification.show(msg, Type.TRAY_NOTIFICATION);
-                getUI().refreshContacts();
+                getUI().refreshMerchants();
             } catch (FieldGroup.CommitException e) {
                 // Validation exceptions could be shown here
             }
