@@ -18,6 +18,7 @@ public class Merchant implements Serializable, Cloneable {
     private String phone = "";
     private String email = "";
     private Date birthDate;
+    private String rule;
 
     public Long getId() {
         return id;
@@ -67,6 +68,14 @@ public class Merchant implements Serializable, Cloneable {
         this.birthDate = birthDate;
     }
 
+    public String getRule() {
+        return rule;
+    }
+
+    public void setRule(String rule) {
+        this.rule = rule;
+    }
+
     @Override
     public Merchant clone() throws CloneNotSupportedException {
         try {
@@ -78,8 +87,14 @@ public class Merchant implements Serializable, Cloneable {
 
     @Override
     public String toString() {
-        return "Contact{" + "id=" + id + ", firstName=" + firstName
-                + ", lastName=" + lastName + ", phone=" + phone + ", email="
-                + email + ", birthDate=" + birthDate + '}';
+        return "Merchant{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", birthDate=" + birthDate +
+                ", rule='" + rule + '\'' +
+                '}';
     }
 }

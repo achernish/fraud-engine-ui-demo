@@ -5,7 +5,9 @@ import com.vaadin.annotations.JavaScript;
 import com.vaadin.annotations.StyleSheet;
 import com.vaadin.data.Property;
 import com.vaadin.ui.AbstractJavaScriptComponent;
+import com.vaadin.ui.JavaScriptFunction;
 import com.vaadin.ui.Notification;
+import elemental.json.JsonArray;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,24 +20,21 @@ import java.util.ArrayList;
 public class XTextEditor extends AbstractJavaScriptComponent {
 
     public XTextEditor() {
-    }
-
-    public interface ValueChangeListener extends Serializable {
-        void valueChange();
-    }
-
-    ArrayList<ValueChangeListener> listeners = new ArrayList<ValueChangeListener>();
-
-    public void addValueChangeListener(ValueChangeListener listener) {
-        listeners.add(listener);
-    }
-
-    public void setValue(String value) {
-        getState().value = value;
+        addFunction("setValue", new JavaScriptFunction() {
+            @Override
+            public void call(JsonArray arguments) {
+                String value = arguments.getString(0);
+                getState().value = value;
+            }
+        });
     }
 
     public String getValue() {
         return getState().value;
+    }
+
+    public void setValue(String value) {
+        getState().value = value;
     }
 
     @Override

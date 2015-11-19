@@ -55,13 +55,6 @@ public class MerchantForm extends FormLayout implements ClickListener {
         HorizontalLayout actions = new HorizontalLayout(save, cancel);
         actions.setSpacing(true);
 
-        xTextEditor.addValueChangeListener(new XTextEditor.ValueChangeListener() {
-            @Override
-            public void valueChange() {
-                Notification.show("Value: " + xTextEditor.getValue());
-            }
-        });
-
         addComponents(actions, firstName, lastName, phone, email, birthDate, xTextEditor);
     }
 
@@ -71,6 +64,9 @@ public class MerchantForm extends FormLayout implements ClickListener {
             // Bind the properties of the contact POJO to fiels in this form
             formFieldBindings = BeanFieldGroup
                     .bindFieldsBuffered(merchant, this);
+
+            xTextEditor.setValue(merchant.getRule());
+
             firstName.focus();
         }
         setVisible(merchant != null);
@@ -87,6 +83,7 @@ public class MerchantForm extends FormLayout implements ClickListener {
             try {
                 // Commit the fields from UI to DAO
                 formFieldBindings.commit();
+                merchant.setRule(xTextEditor.getValue());
 
                 // Save DAO to backend with direct synchronous service API
                 getUI().service.save(merchant);
